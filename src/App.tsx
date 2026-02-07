@@ -5,12 +5,17 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 
+
+
 // Pages
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { CourseCatalog } from "./pages/learner/CourseCatalog";
 import { MyCourses } from "./pages/learner/MyCourses";
 import { CourseDetail } from "./pages/learner/CourseDetail";
+
+// Add this route
+<Route path="/learner/course/:courseId" element={<CourseDetail />} />
 import { LessonPlayer } from "./pages/learner/LessonPlayer";
 import { LoginPage } from "./pages/auth/LoginPage";
 
@@ -37,6 +42,34 @@ function ProtectedRoute({ children, allowedRoles }: { children: React.ReactNode;
   return <>{children}</>;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const AppRoutes = () => (
   <Routes>
     {/* Public Routes */}
@@ -45,6 +78,9 @@ const AppRoutes = () => (
     <Route path="/courses/:courseId" element={<CourseDetail />} />
     <Route path="/login" element={<LoginPage />} />
     <Route path="/register" element={<LoginPage />} />
+    // Example in App.tsx
+<Route path="/learner/course/:courseId" element={<CourseDetail />} />
+<Route path="/learner/course/:courseId/lesson/:lessonId" element={<LessonPlayer />} />
     
     {/* Protected Learner Routes */}
     <Route path="/my-courses" element={
